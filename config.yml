@@ -1,0 +1,435 @@
+## This file is a template remove the .template to use the file
+
+libraries:                       # This is called out once within the config.yml file
+  Filme:                        # These are names of libraries in your Plex
+    collection_files:
+      - pmm: separator_award                          # An "index card"
+      - pmm: bafta                                    # BAFTA Awards
+        schedule: weekly(tuesday)
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: cannes                                    # BAFTA Awards
+        schedule: weekly(tuesday)
+        template_variables:                            # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: emmy                                     # BAFTA Awards
+        schedule: weekly(tuesday)
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: golden                                   # Golden Globes Awards
+        schedule: weekly(tuesday)
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: oscars                                   # The Oscars
+        schedule: weekly(saturday)
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          radarr_add_missing: true
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: separator_chart                          # An "index card"
+      - pmm: basic                                    # Some basic chart collections
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+      - pmm: tmdb                                     # TMDb Charts (Popular, Trending, etc.)
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+      - pmm: seasonal
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+          schedule_independence: never
+          schedule_thanksgiving: never
+          schedule_memorial: never
+          schedule_labor: never
+          schedule_easter: range(03/20-04/04)
+          schedule_valentine: range(02/01-02/29)
+          schedule_halloween: range(10/01-10/31)
+          schedule_christmas: range(12/01-12/31)
+          schedule_420: range(04/20-04/21)
+          schedule_apes: range(11/24-11/26)
+          schedule_years: range(12/28-01/02)
+          append_data:
+            apes: Planet of the Apes Day
+            420: 4/20
+          imdb_list_apes: https://www.imdb.com/list/ls005126084/
+          imdb_list_420: https://www.imdb.com/list/ls075204988/
+          imdb_list_christmas:
+              - https://www.imdb.com/list/ls000096828/
+              - https://www.imdb.com/list/ls025976544/
+              - https://www.imdb.com/list/ls027454200/
+          imdb_list_halloween:
+              - https://www.imdb.com/list/ls023118929/
+              - https://www.imdb.com/list/ls000099714/
+          trakt_list_christmas:
+              - https://trakt.tv/users/galacticboy/lists/christmas-list
+              - https://trakt.tv/users/galacticboy/lists/xmas-sync
+              - https://trakt.tv/users/movistapp/lists/christmas-movies
+      - pmm: based
+        schedule: weekly(tuesday)
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+      - pmm: franchise
+        schedule: weekly(tuesday)
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+      - pmm: flixpatrol
+        template_variables:
+          location: austria
+          language: de          
+      - file: config/FilmeC.yml
+    schedule_overlays: daily
+    overlay_files:
+    - remove_overlays: false     # Set this to true to remove all overlays
+    - reapply_overlays: false
+    - pmm: ribbon                # This is a file within PMM's defaults folder
+      # see the wiki for how to use local files, folders, URLs, or files from git
+    - pmm: ratings                                  
+      template_variables:      
+        run_definition: true
+        rating1: critic
+        rating1_image: rt_tomato
+        rating1_font: config/metadata/overlays/fonts/Adlib.ttf
+        rating2: audience  
+        rating2_image: imdb
+        rating2_font: config/metadata/overlays/fonts/Impact.ttf
+        horizontal_position: left
+        vertical_position: bottom
+        rating_alignment: horizontal
+        vertical_offset: 15
+        horizontal_offset: 0        
+  Filme-Kids:                        # These are names of libraries in your Plex
+    collection_files:
+      - pmm: separator_chart                          # An "index card"
+      - pmm: basic                                    # Some basic chart collections
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+      - pmm: tmdb                                     # TMDb Charts (Popular, Trending, etc.)
+        schedule: weekly(tuesday)
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+      - pmm: seasonal
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+          schedule_independence: never
+          schedule_thanksgiving: never
+          schedule_memorial: never
+          schedule_labor: never
+          schedule_easter: range(03/20-04/04)
+          schedule_valentine: never
+          schedule_halloween: range(10/01-10/31)
+          schedule_christmas: range(12/01-01/06)
+          sort_by: random
+          schedule_years: never
+      - file: config/FilmeC.yml
+      - pmm: based
+        schedule: weekly(tuesday)
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+      - pmm: flixpatrol
+        schedule: weekly(tuesday)
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+    schedule_overlays: weekly(friday)
+    overlay_files:
+    - remove_overlays: false     # Set this to true to remove all overlays
+    - reapply_overlays: false
+    - pmm: ribbon                # This is a file within PMM's defaults folder
+      # see the wiki for how to use local files, folders, URLs, or files from git
+    - pmm: ratings                                  
+      template_variables:      
+        run_definition: true
+        rating1: critic
+        rating1_image: rt_tomato
+        rating1_font: config/metadata/overlays/fonts/Adlib.ttf
+        rating2: audience  
+        rating2_image: imdb
+        rating2_font: config/metadata/overlays/fonts/Impact.ttf
+        horizontal_position: left
+        vertical_position: bottom
+        rating_alignment: horizontal
+        vertical_offset: 15
+        horizontal_offset: 0        
+  Filme HQ:                        # These are names of libraries in your Plex
+    collection_files:
+      - pmm: separator_award                          # An "index card"
+      - pmm: bafta                                    # BAFTA Awards
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: cannes                                    # BAFTA Awards
+        template_variables:                            # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: emmy                                     # BAFTA Awards
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: golden                                   # Golden Globes Awards
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: oscars                                   # The Oscars
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: separator_chart                          # An "index card"
+      - pmm: basic                                    # Some basic chart collections
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+      - pmm: tmdb                                     # TMDb Charts (Popular, Trending, etc.)
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+      - pmm: seasonal
+        template_variables:                           # Disable any US-specific seasonal collections
+          language: de
+          schedule_independence: never
+          schedule_thanksgiving: never
+          schedule_memorial: never
+          schedule_labor: never
+          schedule_easter: range(03/20-04/04)
+          schedule_valentine: range(02/01-02/29)
+          schedule_halloween: range(10/01-10/31)
+          schedule_christmas: range(12/01-01/06)
+          sort_by: random
+          schedule_years: range(12/28-01/02)
+          append_data:
+            420: 4/20
+          schedule_420: range(04/20-04/21)
+          imdb_list_420: https://www.imdb.com/list/ls075204988/
+      - file: config/FilmeC.yml
+      - pmm: based
+        schedule: weekly(tuesday)
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+      - pmm: flixpatrol
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+    schedule_overlays: weekly(thursday)
+    overlay_files:
+    - remove_overlays: false     # Set this to true to remove all overlays
+    - reapply_overlays: false
+    - pmm: ribbon                # This is a file within PMM's defaults folder
+      # see the wiki for how to use local files, folders, URLs, or files from git
+    - pmm: ratings                                  
+      template_variables:      
+        run_definition: true
+        rating1: critic
+        rating1_image: rt_tomato
+        rating1_font: config/metadata/overlays/fonts/Adlib.ttf
+        rating2: audience  
+        rating2_image: imdb
+        rating2_font: config/metadata/overlays/fonts/Impact.ttf
+        horizontal_position: left
+        vertical_position: bottom
+        rating_alignment: horizontal
+        vertical_offset: 15
+        horizontal_offset: 0        
+  Serien:
+    collection_files:
+      - pmm: separator_award                          # An "index card"
+      - pmm: golden                                   # Golden Globes Awards
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+          data:
+            starting: latest-2
+            ending: latest
+      - pmm: separator_chart                          # An "index card"
+      - pmm: basic                                    # Some basic chart collections
+        template_variables:                           # Show collections from latest-10 onwards.
+          language: de
+      - pmm: tmdb                                     # TMDb Charts (Popular, Trending, etc.)
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+      - pmm: based
+        schedule: weekly(tuesday)
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+      - pmm: flixpatrol
+        template_variables:                           # Disable any US-specific seasonal collections
+          sort_by: random
+          language: de
+          location: austria
+      - file: config/shows.yml
+    schedule_overlays: daily
+    overlay_files:
+    - remove_overlays: false     # Set this to true to remove all overlays
+    - reapply_overlays: false
+    - pmm: ribbon                # This is a file within PMM's defaults folder
+    - pmm: status                                   # Airing, Returning, Ended, Canceled on show
+    - pmm: ratings                                  
+      template_variables:      
+        run_definition: true
+        rating1: audience
+        rating1_image: tmdb
+        rating1_font: config/metadata/overlays/fonts/Adlib.ttf
+        rating2: audience  
+        rating2_image: imdb
+        rating2_font: config/metadata/overlays/fonts/Impact.ttf
+        horizontal_position: left
+        vertical_position: bottom
+        rating_alignment: horizontal
+        vertical_offset: 15
+        horizontal_offset: 0        
+settings:
+  cache: true
+  cache_expiration: 60
+  asset_directory: config/assets
+  asset_folders: true
+  asset_depth: 0
+  create_asset_folders: true
+  prioritize_assets: false
+  dimensional_asset_rename: false
+  download_url_assets: false
+  show_missing_season_assets: false
+  show_missing_episode_assets: false
+  show_asset_not_needed: true
+  sync_mode: append
+  minimum_items: 1
+  default_collection_order:
+  delete_below_minimum: true
+  delete_not_scheduled: false
+  run_again_delay: 2
+  missing_only_released: true
+  only_filter_missing: false
+  show_unmanaged: true
+  show_filtered: false
+  show_options: false
+  show_missing: true
+  show_missing_assets: true
+  save_report: true
+  tvdb_language: deu
+  ignore_ids:
+  ignore_imdb_ids: tt13664684,tt3322420,tt10189514,tt20850406,tt0169102,tt15097216,tt0245429,tt9179430,tt10698680,tt15327088,tt8108198,tt2338151,tt2631186,tt8110330,tt10295212,tt0405508,tt4849438,tt1954470,tt0986264,tt5074352,tt10811166,tt2356180,tt0242519,tt8291224,tt4169250,tt1821480,tt2283748,tt9052870,tt0292490,tt0112870,tt1280558,tt0871510,tt1562872,tt2082197,tt0374887,tt4430212,tt3863552,tt7838252,tt0367110,tt0092067,tt0042876,tt0089881,tt0055630,tt5323662,tt0156887,tt0044741,tt11032374,tt0046438,tt0056058,tt0169858,tt5311514,tt0095327,tt0094625,tt0087544,tt0347149,tt0119698,tt0096283,tt0047478,tt10083340,tt2375559,tt2199711,tt12361178,tt2317337,tt2592910,tt6148156,tt1639426,tt3417422,tt15428134,tt8178634,tt10431500,tt15501640,tt14331144,tt16428256,tt27719898,tt7060344,tt8108202,tt5764096,tt9851854,tt10701074,tt7725596,tt9477520,tt7098658,tt6485666,tt7748244,tt7518786,tt9900782,tt9389998,tt8239946,tt7282468,tt11127680,tt2359810,tt2377938,tt5571734,tt10280296,tt2395469,tt1839596,tt0456144,tt14107554,tt9263550,tt3390572,tt1093370,tt4387040,tt2350496,tt3848892,tt6452574,tt1188996,tt4983780,tt4679210,tt3668162,tt7392212,tt0466460,tt1620933,tt4934950,tt10324144,tt2187153,tt4635372,tt8108268,tt3801314,tt15434074,tt4987556,tt11580854,tt8948790,tt7019842,tt7466810,tt23849204,tt0449994,tt13028258,tt4900716,tt4434004,tt2258337,tt1447500,tt0499375,tt1230165,tt15732324,tt23554840,tt7212754,tt11314148,tt2980794,tt3767372,tt2855648,tt1926313,tt1324059,tt6826438,tt3447364,tt2140465,tt5286444,tt6484982,tt1934231,tt15654262,tt8130968,tt4981966,tt6108090,tt2213054,tt7268738,tt2181931,tt10895576,tt1327035,tt7218518,tt2882328,tt7485048,tt11581174,tt28362963,tt0488414,tt7294534,tt8108274,tt0479751,tt3495030,tt2621000,tt6967980,tt1434447,tt24485052,tt0420332,tt0323013,tt0238936,tt0347304,tt0375611,tt0376127,tt0400234,tt0367495,tt7286916,tt13238346,tt22297828,tt10919240,tt13391710,tt13206926,tt11905462,tt19500164,tt17592606,tt10534500,tt18568902,tt16747572,tt11375428,tt13349716,tt12472554,tt22488728,tt14002046,tt6915770,tt9006564,tt22743064,tt11772746,tt11322920,tt20913276,tt6129302,tt9675716,tt5959980,tt7060460,tt8108200,tt10214826,tt8176054,tt7465992,tt7738784,tt7019942,tt8413338,tt8590896,tt7758160,tt7919680,tt8144834,tt11374902,tt10895556,tt7618184,tt6980546,tt7363076,tt9420648,tt6299040,tt10515526,tt6173990,tt10579952,tt6588966,tt6067752,tt9537292,tt6264938,tt5668770,tt22444570,tt7700730,tt5301942,tt13022984,tt8983228,tt7469726,tt9098938,tt15654328,tt21262240,tt15145764,tt15128068,tt5207158,tt9586294,tt26537229,tt11958344,tt5084170,tt12415546,tt7236034,tt2458948,tt8075192,tt5104604,tt6587046,tt14039582,tt9426210,tt11991748,tt7745068,tt9179096,tt11809034,tt14888874,tt16492678,tt14993250,tt5690142,tt6972140,tt15680228,tt10741542,tt13793230,tt11720440,tt6971752,tt8747450,tt15257644,tt13912632,tt15516226,tt10709484,tt26675491,tt11142762,tt12567088,tt11773378,tt13529034,tt8907986,tt7529298,tt9248940,tt13130760,tt13491678,tt12861850,tt11651796,tt7027278,tt7026666,tt6692354,tt8869978,tt8269248,tt15748830,tt8959820,tt8983164,tt11934846,tt7363104,tt7715202,tt8504014,tt5785170,tt13131350,tt9260636,tt14099334,tt7581902,tt10964430,tt5982852,tt10083640,tt12015102,tt5460276,tt14914988,tt11027830,tt11460992,tt11663228,tt15600222,tt5935704,tt8983202,tt13510660,tt13131232,tt18411490,tt13927994,tt3405236,tt13751694,tt6571548,tt24268454,tt15354916,tt9124428,tt9500372,tt28814949,tt4139928,tt8737152,tt6788942,tt9675274,tt6697582,tt7318202,tt7832124,tt7642818,tt14859416,tt6628102,tt6316138,tt13045890,tt15710136,tt9766332,tt13919802,tt19838608,tt9569610,tt7094488,tt13885320,tt13299890,tt11732164,tt14418234,tt10340562,tt14209560,tt21983758,tt9054970,tt15427980,tt14438964,tt15440322,tt16077702,tt13491110,tt15073166,tt27501039,tt6950476,tt14152140,tt27989067,tt28145495,tt14295590,tt19755170,tt26445483,tt14923112,tt27191600,tt11423818,tt10687070,tt11396310,tt19886242,tt27906902,tt8302382,tt27655393,tt13534808,tt14915198,tt13801462,tt18413766,tt14091818,tt8984572,tt10351180,tt16118524,tt28282716,tt21848358,tt14279982,tt15566126,tt15309708,tt14875116,tt12861212,tt13421132,tt18266472,tt15717242,tt26258634,tt15361028,tt15576460,tt14428598,tt14182646,tt11306376,tt22751230,tt14598754,tt11379988,tt22543326,tt13551614,tt14526318,tt20249418,tt27125266,tt13528564,tt21398196,tt18559904,tt25274786,tt27542289,tt26243612,tt11773308,tt21261388,tt11604676,tt24226474,tt10786774,tt11953248,tt15193162,tt12888462,tt9376612,tt3569782,tt2877108,tt5460658,tt3394420,tt4429128,tt5354160,tt5005684,tt7180544,tt7822438,tt2926068,tt5824826,tt5906392,tt2659414,tt3153634,tt12393526,tt7430722,tt8589698,tt8672856,tt11998558,tt11703050,tt18550140,tt15838850,tt27411485,tt28075055,tt20365920,tt23736044,tt5198068,tt13229894,tt15353450,tt27867635,tt14614892,tt18951176,tt13231544,tt20561198,tt11992424,tt8503618,tt19653180,tt10633456,tt17679584,tt27503384,tt15242330
+  item_refresh_delay: 0
+  playlist_sync_to_user: all
+  playlist_exclude_user:
+  playlist_report: false
+  verify_ssl: false
+  custom_repo:
+  check_nightly: false
+  show_unconfigured: true
+  playlist_exclude_users:
+  run_order:
+  - metadata
+  - collections
+  - overlays
+  - operations
+webhooks:                        # Can be individually specified per library as well
+  error: notifiarr
+  version: notifiarr
+  run_start: notifiarr
+  run_end: notifiarr
+  changes: notifiarr
+  delete: notifiarr
+plex:                            # Can be individually specified per library as well; REQUIRED for the script to run
+  url:
+  token:
+  timeout: 60
+  clean_bundles: false
+  empty_trash: false
+  optimize: false
+  db_cache:
+tmdb:                            # REQUIRED for the script to run
+  apikey: 
+  language: de
+  cache_expiration: 60
+  region: AT
+tautulli:                        # Can be individually specified per library as well
+  url:
+  apikey:
+omdb:
+  apikey: ########
+  cache_expiration: 60
+mdblist:
+  apikey:
+  cache_expiration: 60
+notifiarr:
+  apikey:
+anidb:                           # Not required for AniDB builders unless you want mature content
+  username: ######
+  password: ######
+  language: en
+  client:
+radarr:                          # Can be individually specified per library as well
+  url:
+  token:
+  add_missing: false
+  add_existing: false
+  root_folder_path: F:\Plex\RADARR
+  monitor: false
+  availability: announced
+  quality_profile:
+  tag:
+  search: false
+  radarr_path:
+  plex_path:
+  upgrade_existing: false
+  ignore_cache: false
+sonarr:                          # Can be individually specified per library as well
+  url:
+  token:
+  add_missing: false
+  add_existing: false
+  root_folder_path: F:\Plex\SONARR
+  monitor: all
+  quality_profile:
+  language_profile: German
+  series_type: standard
+  season_folder: true
+  tag:
+  search: false
+  cutoff_search: false
+  sonarr_path:
+  plex_path:
+  upgrade_existing: false
+  ignore_cache: false
+trakt:
+  client_id:
+  client_secret:
+  pin:
+  authorization:
+    # everything below is autofilled by the script
+    access_token:
+    token_type:
+    expires_in:
+    refresh_token:
+    scope:
+    created_at:
+mal:
+  client_id: ####################
+  client_secret: ####################
+  authorization:
+    # everything below is autofilled by the script
+    access_token:
+    token_type:
+    expires_in:
+    refresh_token:
