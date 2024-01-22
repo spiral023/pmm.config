@@ -1,0 +1,134 @@
+## This file is a template remove the .template to use the file
+collections:
+######################################################
+#                      BEST OF                       #
+######################################################
+  ZZ Sonarr Search:
+    sonarr_add_missing: true
+    sonarr_search: false
+    sonarr_monitor: all
+    imdb_search:
+      release.after: 2022-01-01
+      release.before: 2024-12-12
+      rating.gte: 7.3
+      votes.gte: 8000
+      list.not: ls522444139,ls522425654
+      language.not: hin
+      genre.not: musical,animation,news,short,sport,reality-tv,film-noir,talk-show,game-show
+      type: tv_series,tv_episode,tv_mini_series
+      type.not: movie,tv_movie
+      country.not: jp,in,bd,ir,kr,gr,tr,sa
+      keyword.not:
+      sort_by: rating.desc
+      limit: 30
+    collection_order: custom
+    sync_mode: sync
+    schedule: daily
+  Search-Test 2 list include:
+    imdb_search:
+      release.after: 2016-01-01
+      release.before: 2024-01-01
+      rating.gte: 6.5
+      votes.gte: 3000
+      list: ls522425654
+      language.not: hin
+      genre.not: documentary,musical,animation,news,short,sport,reality-tv,film-noir,talk-show,game-show
+      type: tv_series,tv_episode,tv_mini_series
+      type.not: movie,tv_movie
+      country.not: jp,in,bd,ir,kr,gr,tr,sa
+      keyword.not:
+      sort_by: rating.desc
+      limit: 300
+    collection_order: custom
+    sync_mode: sync
+    schedule: daily
+  Test AT Netflix Monthly Top 10:
+    flixpatrol_top:
+      platform: netflix
+      location: austria
+      limit: 10
+    collection_order: custom
+    sync_mode: sync
+    schedule: 
+     - monthly(1)
+     - monthly(15)
+  Test Plex Popular:
+    tautulli_popular:
+      list_days: 365
+      list_size: 20
+    tautulli_watched:
+      list_days: 365
+      list_size: 20
+    sync_mode: sync
+    summary: Movies Popular on Plex last 365 days
+    collection_order: alpha
+    schedule: weekly(sunday)
+  TestIMDb Best Recent:
+    smart_label: release.desc
+    sync_mode: sync
+    summary: Filme mit einem IMDb Score von 7 oder höher, veröffentlicht in den letzten 12 Monaten.
+    sort_title: '+1_4 IMDb Best Rated'
+    collection_mode: default
+    schedule: weekly(sunday)
+    plex_search:
+      audience_rating.gte: 7.0
+      release: 365
+  Test IMDB Serien Liste:
+    imdb_list:
+      - https://www.imdb.com/list/ls522425654
+    summary: 
+    sort_title: '+IMDB2'
+    collection_order: release
+    collection_mode: default
+######################################################
+#                      THEMES                        #
+######################################################
+  BAFTA Awards & Nominees:
+    trakt_list:
+      - https://trakt.tv/users/pjcob/lists/2023-bafta
+      - https://trakt.tv/users/pjcob/lists/2022-bafta
+      - https://trakt.tv/users/pjcob/lists/2021-bafta
+      - https://trakt.tv/users/pjcob/lists/2020-bafta
+      - https://trakt.tv/users/pjcob/lists/2019-bafta
+      - https://trakt.tv/users/pjcob/lists/2018-bafta
+      - https://trakt.tv/users/pjcob/lists/2017-bafta
+      - https://trakt.tv/users/pjcob/lists/2016-bafta
+      - https://trakt.tv/users/pjcob/lists/2015-bafta
+      - https://trakt.tv/users/pjcob/lists/2014-bafta   
+    summary: "2014-2023 Bafta Awards and Nominees EXCLUDING: Oscars and Golden Globes nominees"
+    sort_title: ++++++++++++++++++_BAFTA
+    url_poster: https://i.imgur.com/hNt5VUC.png
+    url_background: https://i.imgur.com/Cy7Qseh.jpg
+    schedule: weekly(sunday)
+  2022 Movie Awards:
+    trakt_list:
+      - https://trakt.tv/users/pjcob/lists/2022-bafta
+      - https://trakt.tv/users/pjcob/lists/2022-cannes
+      - https://trakt.tv/users/pjcob/lists/2022-sundance
+      - https://trakt.tv/users/pjcob/lists/2022-other-awards
+      - https://trakt.tv/users/pjcob/lists/2022-critic-s-choice
+      - https://trakt.tv/users/pjcob/lists/2022-independent-spirits
+      - https://trakt.tv/users/pjcob/lists/2022-golden-globes
+      - https://trakt.tv/users/pjcob/lists/2022-oscars
+    summary: "2023 Movie Awards"
+    sort_title: ++++++++++++++++++_2023
+    schedule: weekly(sunday)
+  2023 Movie Awards:
+    trakt_list:
+      - https://trakt.tv/users/pjcob/lists/2023-bafta
+      - https://trakt.tv/users/pjcob/lists/2023-cannes
+      - https://trakt.tv/users/pjcob/lists/2023-sundance
+      - https://trakt.tv/users/pjcob/lists/2023-other-awards
+      - https://trakt.tv/users/pjcob/lists/2023-critic-s-choice
+      - https://trakt.tv/users/pjcob/lists/2023-independent-spirits
+      - https://trakt.tv/users/pjcob/lists/2023-golden-globes
+      - https://trakt.tv/users/pjcob/lists/2023-oscars
+    summary: "2023 Movie Awards"
+    sort_title: ++++++++++++++++++_2023
+    schedule: weekly(sunday)
+###########################
+#    Genre Collections    #
+###########################
+  Action:
+    template: {name: Genre, genre: Action, poster: https://theposterdb.com/api/assets/52018}
+    summary: Action film is a genre wherein physical action takes precedence in the storytelling. The film will often have continuous motion and action including physical stunts, chases, fights, battles, and races. The story usually revolves around a hero that has a goal, but is facing incredible odds to obtain it.
